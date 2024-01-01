@@ -15,11 +15,14 @@ public class App {
             List<User> userList = communication.getAllUsers();
 
             User user = new User("James", "Brown", (byte)25);
-            communication.saveUser(user);
+//            communication.saveUser(user);
+            communication.createUser(user);
+
 
             user.setName("Thomas");
             user.setLastName("Shelby");
-            communication.saveUser(user);
+//            communication.saveUser(user);
+            communication.updateUser(user);
 
             communication.deleteUser(3L);
         }

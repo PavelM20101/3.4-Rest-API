@@ -34,7 +34,12 @@ public class Communication {
 
         return allUsers;
     }
+//    public User getUser(Long id){
+//        User user = restTemplate.getForObject(URL + "/" + id, User.class);
+//        return user;
+//    }
 
+    /*------------------------------------------------*/
     public void saveUser(User user) {
         HttpHeaders headers = createHttpHeadersWithSessionId();
 
@@ -44,6 +49,16 @@ public class Communication {
         } else {
             restTemplate.exchange(URL, HttpMethod.PUT, new HttpEntity<>(user, headers), String.class);
         }
+    }
+    /*---------------------------------------------*/
+    public void createUser(User user){
+        HttpHeaders headers = createHttpHeadersWithSessionId();
+        Long id = user.getId();
+        restTemplate.exchange(URL, HttpMethod.POST, new HttpEntity<>(user, headers), String.class);
+    }
+    public void updateUser(User user){
+        HttpHeaders headers = createHttpHeadersWithSessionId();
+        restTemplate.exchange(URL, HttpMethod.PUT, new HttpEntity<>(user, headers), String.class);
     }
 
     public void deleteUser(Long id) {
